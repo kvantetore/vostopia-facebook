@@ -88,3 +88,16 @@ PaymentProvider to FACEBOOK, and set the Facebook App Id to the facebook app id 
 
 This allows vostopia authentication to initialize the facebook javascript sdk in order to enable
 facebook payments.
+
+As long as you are in the editor, the vostopia authentication dialog will still appear, but in the webplayer
+on facebook, it is able to take advantage of the GetVostopiaParameters function to automatically log the
+facebook user in.
+
+To see it live, build your project as a webplayer and replace "public/unity/webplayer.unity3d" with the built binary.
+Commit and push to heroku to update the live version
+
+    git commit public/unity/webplayer.unity3d -m "Updated webplayer"
+    git push heroku master
+
+Your facebook canvas app should now automatically sign in your vostopia user. For facebook users without 
+a prior vostopia user, a new one will be created transparently.

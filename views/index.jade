@@ -1,0 +1,48 @@
+extends layout
+
+block addhead
+  style(type="text/css")
+    .content {
+        width: #{webplayer_width}px;
+    }
+    #unityPlayer {
+        width: #{webplayer_width}px;
+        height: #{webplayer_height}px;
+    }
+  
+  script(type="text/javascript", src="/javascripts/UnityObject.js")
+  script(type="text/javascript")
+    function GetUnity() {
+      if (typeof unityObject != "undefined") {
+        return unityObject.getObjectById("unityPlayer");
+      }
+      return null;
+    }
+    if (typeof unityObject != "undefined") {
+      unityObject.embedUnity("unityPlayer", "#{webplayer_url}", #{webplayer_width}, #{webplayer_height});
+    }
+ 
+  script(type="text/javascript")
+    function GetVostopiaParameters(obj, meth)
+    {
+      var unity = GetUnity();
+      var params = {
+        auth: {
+          method: "facebook",
+          oauthToken: "#{signed_request.oauth_token}"
+        }
+      };
+      unity.SendMessage(obj, meth, JSON.stringify(params));
+    }
+
+block content
+  h1= title
+  div.content
+    #unityPlayer
+      .missing
+        a(href='http://unity3d.com/webplayer/')
+          img(alt="Unity Web Player. Install now!", src="http://webplayer.unity3d.com/installation/getunity.png", width="193", height="63")
+    
+
+
+

@@ -19,7 +19,7 @@ the web surround, that sends the oauth back to a specified GameObject in Unity.
             var params = {
                 auth: {
                     method: "facebook",
-                    oauthToken: "<facebook oauth token>"
+                    oauthToken: "[facebook oauth token]"
                 }
             };
             unity.SendMessage(obj, meth, JSON.stringify(params));
@@ -52,7 +52,7 @@ Heroku will generate a unique app name and url for your app.
 Push the vostopia-facebook app to heroku
     git push heroku master
 
-When the app has started, you can visit the app on https://<your-app-name>.herokuapp.com.
+When the app has started, you can visit the app on https://[your-app-name].herokuapp.com.
 The app relies on being hosted inside a facebook canvas, so navigating to your app will return a
 "No Facebook Authentication Detected" error message.
 
@@ -64,20 +64,21 @@ With the example app running on heroku, It's now time to set up a facebook canva
 
 Create a new facebook app on https://developers.facebook.com/apps/.
 
-Enable "App on Facebook", and set the "Secure Canvas Url" to https://<your-app-name>.herokuapp.com. 
+Enable "App on Facebook", and set the "Secure Canvas Url" to https://[your-app-name].herokuapp.com. 
 Note the https. Facebook canvas apps works best when they are served over https, and it will be required
 by October 1.
 
-Under "Permissions", make sure you enable "Authenticated Referrals".
+After you have created the facebook app, update your environment variables, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET,
+and FACEBOOK_APP_NAMESPACE with the corresponding values. 
+    $ heroku config:set FACEBOOK_APP_ID=[your-facebook-app-id]
+    $ heroku config:set FACEBOOK_APP_SECRET=[your-facebook-secret] 
+    $ heroku config:set FACEBOOK_APP_NAMESPACE=[your-facebook-namespace]
 
 To enable purchasing virtual currency with Facebook Credits, you must complete the company information, 
 and set the "Payments Callback URL" to the vostopia server.
 
-For the vostopia test server, this url is
-   http://test.vostopia.com/en/<your-vostopia-gameId>/accounts/facebookCreditsCallback
-
 For the production server, the url is
-   https://vostopia.com/en/2862423528325505422/accounts/facebookCreditsCallback
+   https://vostopia.com/en/[your-vostopia-gameId]/accounts/facebookCreditsCallback
 
 
 Set Up Unity Project

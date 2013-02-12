@@ -43,10 +43,12 @@ Get the vostopia facebook integration project from github
 > git clone https://github.com/kvantetore/vostopia-facebook.git
 
 Then, in the vostopia-facebook folder, create a heroku app. 
+
     $ heroku apps:create
     Creating vostopia-facebook... done, stack is cedar
     http://vostopia-facebook.herokuapp.com/ | git@heroku.com:vostopia-facebook.git
     Git remote heroku added
+
 Heroku will generate a unique app name and url for your app.
 
 Push the vostopia-facebook app to heroku
@@ -70,6 +72,7 @@ by October 1.
 
 After you have created the facebook app, update your environment variables, FACEBOOK_APP_ID, FACEBOOK_APP_SECRET,
 and FACEBOOK_APP_NAMESPACE with the corresponding values. 
+
     $ heroku config:set FACEBOOK_APP_ID=[your-facebook-app-id]
     $ heroku config:set FACEBOOK_APP_SECRET=[your-facebook-secret] 
     $ heroku config:set FACEBOOK_APP_NAMESPACE=[your-facebook-namespace]

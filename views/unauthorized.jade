@@ -1,10 +1,7 @@
-extends layout
-
-block content
-  h1 No Facebook Authentication Detected
-  | Facebook signed_request not found. This sample must be run through facebook canvas. 
-  | Make sure to enable authenticated referrals in your facebook app settings
-    
-
+doctype 5
+html
+  body
+    script(type="text/javascript")
+      window.top.location = "!{oauth_url}";
 
 

@@ -29,7 +29,7 @@ block addhead
       var params = {
         auth: {
           method: "facebook",
-          oauthToken: "#{signed_request.oauth_token}"
+          oauthToken: "#{oauth_token}"
         }
       };
       unity.SendMessage(obj, meth, JSON.stringify(params));
